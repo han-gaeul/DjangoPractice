@@ -1,5 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>커뮤니티</h1>
+<!-- nav -->
+<nav class="nav">
+    <div class="container nav-warp">
+        <h1 class="nav-title">
+            커뮤니티
+        </h1>
+    </div>
+</nav>
+
+<!-- container -->
+<div class="container">
+    <div class="index-wrap mt-5">
+        <!-- card -->
+        <div class="card">
+            {% for review in reviews %}
+            <a href="{% url 'community:detail' review.pk %}">
+                <div class="card-item reounded-4 p-3 mb-3">
+                    <h3 class="card-title">
+                        {{ review.title }}
+                        <span class="card-date">{{ review.created_at | date: 'm월 d일' }}</span>
+                    </h3>
+                    <p class="card-content">{{ review.content }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <!-- write-btn -->
+        <a href="{% url 'community:new' %}">
+            <div class="write btn btn-primary">
+                <span>글 작성하기</span>
+                <i class="fa-solid fa-pen"></i>
+            </div>
+        </a>
+    </div>
+</div>
 {% endblock %}
