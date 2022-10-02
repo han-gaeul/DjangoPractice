@@ -20,7 +20,7 @@
                 <div class="card-item reounded-4 p-3 mb-3">
                     <h3 class="card-title">
                         {{ review.title }}
-                        <span class="card-date">{{ review.created_at | date: 'm월 d일' }}</span>
+                        <span class="card-date">{{ review.created_at | date:'m월 d일' }}</span>
                     </h3>
                     <p class="card-content">{{ review.content }}</p>
                 </div>

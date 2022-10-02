@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- form -->
+    <form action="{% url 'community:update' review.pk %}">
+        <!-- edit top -->
+        <div class="new-top m-5">
+            <a href="{% url 'community:index %}"><i class="fa-solid da-chevron-left fa-2x"></i></a>
+            <h2>글 수정</h2>
+            <button class="btn btn-light" type="submit">저장</button>
+        </div>
+
+        <!-- edit bottom -->
+        <div class="new-bottom">
+            <div class="new-wrap p-4 rounded-5">
+                <div class="mb-3 new-input">
+                    <input type="text" class="form-control" id="editFormControlnput" name="title" value="{{ review.title }}">
+                </div>
+                <div class="mb-3">
+                    <textarea name="content" id="editFormControlTextaria" rows="10" class="form-control">{{ review.content }}</textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

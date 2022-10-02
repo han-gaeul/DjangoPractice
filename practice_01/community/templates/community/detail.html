@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <a href="{% url 'community:edit' review.pk %}" class="btn mb-2">수정</a>
+                <a href="{% url 'community:delete' review.pk %}" class="btn mb-2">삭제</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- detail top -->
+<div class="detail-top m-3">
+    <div class="container detail-wrap">
+        <a href="{% url 'community:index' %}"><i class="fa-solid fa-chevron-left fa-2x"></i></a>
+        <a href="" data-bs-toggle="modal" data-bs-target="#modal"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+    </div>
+</div>
+
+<!-- detail bottom -->
+<div class="container">
+    <form action="{% url 'community:create' %}">
+        <div class="new-bottom">
+            <div class="new-wrap p-4 rounded-5">
+                <div class="new-input mb-3">
+                    <h1>{{ review.title }}<h1>
+                </div>
+                <div class="mb-3">
+                    <p>{{ review.content }}</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
