@@ -4,32 +4,32 @@
   {% block content %}
 
   <!-- Nav -->
-  <nav class="nav">
-    <div class="container nav-wrap">
-      <h1 class="nav-title">커뮤니티</h1>
+  <nav class="position-sticky top-0">
+    <div class="container d-flex justify-content-center py-10 mt-3">
+      <h1>커뮤니티</h1>
     </div>
   </nav>
 
   <!-- Container -->
-  <div class="container">
-    <div class="index-wrap mt-5">
+  <div class="container width: 65%">
+    <div class="mt-5">
       <!-- card -->
       <div class="card">
         {% for review in reviews %}
         <a href="{% url 'community:detail' review.pk %}">
-          <div class="card-item rounded-4 p-3 mb-3">
-            <h3 class="card-title">
+          <div class="rounded-4 p-3 mb-3">
+            <h3 class="">
               {{ review.title }}
-              <span class="card-date">{{ review.created_at | date:'m월 d일' }}</span>
+              <span class="">{{ review.created_at | date:'m월 d일' }}</span>
             </h3>
-            <p class="card-content">{{ review.content }}</p>
+            <p class="">{{ review.content }}</p>
           </div>
         </a>
         {% endfor %}
       </div>  
       
       <!-- write btn -->
-      <a href="{% url 'community:new' %}" style="color: var(--color-white);">
+      <a href="{% url 'community:new' %}">
         <div class="write btn btn-primary">
           <span>글 작성하기</span>
           <i class="fa-solid fa-pen"></i>
