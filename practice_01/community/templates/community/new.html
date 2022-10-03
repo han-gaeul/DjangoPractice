@@ -1,26 +1,29 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<div class="container">
-    <form action="{% url 'community:create' %}">
-        <!-- new top -->
-        <div class="new-top m-5">
-            <a href="{% url 'community:index' %}"><i class="fa-solid fa-chevron-left fa-2x"></i></a>
-            <h2>글 쓰기</h2>
-            <button class="btn btn-ligth" type="submit">저장</button>
-        </div>
 
-        <!-- new bottom -->
-        <div class="new-bottom">
-            <div class="new-wrap p-4 rounded-5">
-                <div class="new-input mb-3">
-                    <input type="text" class="form-control" id="newFormControlInput" name="title" placeholder="제목을 입력해주세요.">
-                </div>
-                <div class="mb-3">
-                    <textarea   class="form-control" name="content" id="newFormControlTextarea" rows="10" placeholder="내용을 입력해주세요."></textarea>
-                </div>
-            </div>
+{% block content %}
+
+<div class="container">
+  <form action="{% url 'community:create' %}">
+    <!-- New top -->
+    <div class="new-top m-5">
+      <a href="{% url 'community:index' %}"><i class="fa-solid fa-chevron-left fa-2x"></i></a>
+      <h2>글쓰기</h2>
+      <button type="submit" class='btn btn-light'>저장</button>
+    </div>
+  
+    <!-- New bottom -->
+    <div class="new-bottom">
+      <div class="new-wrap p-4 rounded-5">
+        <div class="mb-3 new-input">
+          <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="제목을 입력해주세요.">
         </div>
-    </form>
+        <div class="mb-3">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="content" placeholder="내용을 입력해주세요."></textarea>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
-{% endblock %}
+
+{% endblock content %}

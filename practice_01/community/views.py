@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from .models import Review
 
-# Create your views here.
+
 
 def index(request):
     reviews = Review.objects.all()
@@ -11,6 +11,7 @@ def index(request):
     }
     return render(request, 'community/index.html', context)
 
+
 def detail(request, pk):
     review = Review.objects.get(pk=pk)
 
@@ -19,7 +20,9 @@ def detail(request, pk):
     }
     return render(request, 'community/detail.html', context)
 
+
 def new(request):
+
     return render(request, 'community/new.html')
 
 def edit(request, pk):
@@ -35,7 +38,7 @@ def create(request):
     content = request.GET.get('content')
 
     Review.objects.create(title=title, content=content)
-
+    
     return redirect('community:index')
 
 def update(request, pk):
@@ -50,5 +53,5 @@ def update(request, pk):
     return redirect('community:detail', review.pk)
 
 def delete(request, pk):
-    Review.objects.get(pk=pk).delete()
+    Review.objects.get(pk=pk).delete() 
     return redirect('community:index')
