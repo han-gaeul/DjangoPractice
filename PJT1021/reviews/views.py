@@ -41,3 +41,20 @@ def create(request):
         'review_form' : review_form
     }
     return render(request, 'reviews/form.html', context)
+
+# 리뷰 수정
+@login_required
+def update(request, pk):
+    review = Review.objects.get(pk=pk)
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST, request.FILES, instance=review)
+        if review_form.is_valid():
+            review_form.save()
+            messages.success(request, '글이 수정 되었습니다.')
+            return redirect('reviews:detail', review.pk)
+    else:
+        review_form = ReviewForm(instance=review)
+    context = {
+        'review_form' : review_form
+    }
+    return render(request, 'reviews/form.html', context)
