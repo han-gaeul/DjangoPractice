@@ -58,3 +58,14 @@ def update(request, pk):
         'review_form' : review_form
     }
     return render(request, 'reviews/form.html', context)
+
+# 리뷰 삭제
+def delete(request, pk):
+    review = Review.objects.get(pk=pk)
+    if request.method == 'POST':
+        review.delete()
+        return redirect('reviews:index')
+    context = {
+        'review' : review
+    }
+    return render(request, 'reviews/index.html', context)
