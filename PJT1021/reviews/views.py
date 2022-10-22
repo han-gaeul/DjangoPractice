@@ -23,3 +23,21 @@ def detail(request, pk):
         'comment_form' : comment_form
     }
     return render(request, 'reviews/detail.html', context)
+
+# 리뷰 작성
+@login_required
+def create(request):
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST, request.FILES)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.save()
+            messages.success(request, '글이 작성 되었습니다.')
+            return redirect('reviews:index')
+    else:
+        review_form = ReviewForm()
+    context = {
+        'review_form' : review_form
+    }
+    return render(request, 'reviews/form.html', context)
