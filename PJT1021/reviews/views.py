@@ -69,3 +69,15 @@ def delete(request, pk):
         'review' : review
     }
     return render(request, 'reviews/index.html', context)
+
+# 댓글 작성
+@login_required
+def comment_create(request, pk):
+    review = Review.objects.get(pk=pk)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.review = review
+        comment.user = request.user
+        comment.save()
+    return redirect('reviews:detail', pk)
