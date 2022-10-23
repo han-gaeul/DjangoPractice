@@ -25,6 +25,7 @@
       <form action="{% url 'reviews:comment_create' review.pk %}" method="POST">
         {% csrf_token %}
         {% bootstrap_form comment_form %}
+        <button type="submit" class="btn btn-primary">등록</button>
       </form>
     {% endif %}
     <div class="my-3 position-relative">
@@ -36,7 +37,7 @@
                 {% if profile_se.image %}
                   <img src="{{ profile_se.image.url }}" alt="{{ profile_se.image }}" style="width: 35px; height: 35px; border-radius: 500px">
                 {% else %}
-                  <img src="https://dummyimage.com/600x400/fff/fff" alt="image" style="width: 35px; height: 35px; border-radius: 500px">
+                  <img src="https://i.pinimg.com/originals/f1/5c/9e/f15c9e2ce52a1735081be72dcec2e97d.jpg" alt="image" style="width: 35px; height: 35px; border-radius: 500px">
                 {% endif %}
               {% endfor %}
               <div class="ms-3" style="width: 90%;">

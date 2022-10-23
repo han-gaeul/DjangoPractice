@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews</title>
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
   </head>
 
   <body>
@@ -20,24 +22,24 @@
           </span>
         </a>
       </div>
-      <div class="container">
+      <div class="container d-flex justify-content-end">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="{% url 'accounts:index' %}" class="nav-link">회원 목록</a>
+              <a href="{% url 'reviews:index' %}" class="nav-link">리뷰 목록</a>
             </li>
             {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a href="{% url 'reviews:create' %}" class="nav-link">작성</a>
+                <a href="{% url 'reviews:create' %}" class="nav-link">리뷰 작성</a>
               </li>
               <li class="nav-item">
                 <a href="{% url 'accounts:profile' %}" class="nav-link">{{ request.user }}</a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'reviews:logout' %}" class="nav-link">로그아웃</a>
+                <a href="{% url 'accounts:logout' %}" class="nav-link">로그아웃</a>
               </li>
             {% else %}
               <li class="nav-item">

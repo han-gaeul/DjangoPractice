@@ -63,12 +63,13 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', context)
 
 # 회원 정보
+@login_required
 def detail(request, pk):
-    user = get_user_model()
+    user = get_user_model().objects.get(pk=pk)
     context = {
-        'user' : user
+        'user' : user,
     }
-    return render(request, 'accounts:detail.html', context)
+    return render(request, 'accounts/detail.html', context)
 
 # 회원 정보 수정
 @login_required
@@ -88,7 +89,7 @@ def update(request):
 # 프로필
 def profile(request):
     user = request.user
-    reviews = user.reviews_set.all()
+    reviews = user.review_set.all()
     comments = user.comment_set.all()
     profile = user.profile_set.all()[0]
     context = {
