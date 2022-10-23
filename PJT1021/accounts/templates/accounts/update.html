@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <h1>회원 정보 수정</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="수정">
+    <button class="btn btn-outline-dark" type="button" onclick="location.href='{% url 'reviews:index' %}'">뒤로가기</button>
+  </form>
+{% endblock content %}
