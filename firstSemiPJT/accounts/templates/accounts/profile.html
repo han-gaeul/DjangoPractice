@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <div class="d-flex align-items-center">
+    <div>
+      {% if profile.image %}
+        <img src="{{ profile.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 500px">
+      {% else %}
+        <img src="https://i.pinimg.com/originals/f1/5c/9e/f15c9e2ce52a1735081be72dcec2e97d.jpg" alt="" style="width: 100px; height: 100px; border-radius: 500px">
+      {% endif %}
+    </div>
+    <div>
+      <div class="d-flex align-items-center">
+        <h1 class="mx-3">{{ user.username }}</h1>
+        <div>
+          <a href="{% url 'accounts:profile_update' %}" class="btn btn-light">프로필 편집</a>
+        </div>
+      </div>
+      <div class="d-flex mx-3">
+        <div class="mx-1">
+          팔로워
+          {{ user.followers.count }}
+        </div>
+        <div class="mx-1">
+          팔로우
+          {{ user.followings.count }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between mt-5">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">게시물</a>
+        {% for article in articles %}
+          <div class="col-md-auto">
+            <a href="{% url 'information:detail' article.pk %}">
+              <div class="card text-center">
+                <div class="card-header">
+                  Featured
+                </div>
+                <div class="thumb">
+                  {% if article.thumbnail %}
+                    <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="{{ article.image }}">
+                  {% else %}
+                    <img src="https://dummyimage.com/600x400/fff/fff" alt="image">
+                  {% endif %}
+                </div>
+                <div class="card-body">
+                  <p>{{ article.summary }}...</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% else %}
+          <div>
+            <p>작성한 게시물이 없습니다.</p>
+          </div>
+        {% endfor %}
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+  </div>
+{% endblock content %}
