@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <h3 class="mt-5">{{ article.title }}</h3>
+  <p class="mt-5">{{ article.content }}</p>
+{% endblock content %}
