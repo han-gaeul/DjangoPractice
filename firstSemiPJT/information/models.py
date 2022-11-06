@@ -22,3 +22,6 @@ class Information(models.Model):
         format='JPEG',
         options={'quality' : 100},
     )
+
+    def summary(self):
+        return self.body[:100]
