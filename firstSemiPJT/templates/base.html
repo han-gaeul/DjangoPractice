@@ -20,10 +20,10 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="{% url 'information:index' %}">목록</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="{% url 'information:create' %}">글 작성</a>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -43,6 +43,23 @@
     <div class="container">
       {% block content %}{% endblock content %}
     </div>
+
+    {% comment %} <footer class="bg-light fixed-bottom h-25">
+      <div class="container-fluid h-25">
+        <div class="row">
+          <div>
+            <a href="{% url 'information:index' %}">
+              <i class="fa-solid fa-house"></i>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'information:create' %}">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer> {% endcomment %}
 
     {% bootstrap_javascript %}
   </body>
