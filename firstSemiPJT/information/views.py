@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # 글 목록
-@require_safe
 def index(request):
     articles = Information.objects.order_by('-pk')
     context = {
