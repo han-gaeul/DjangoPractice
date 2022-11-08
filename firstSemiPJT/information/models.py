@@ -22,6 +22,13 @@ class Information(models.Model):
         format='JPEG',
         options={'quality' : 100},
     )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='')
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles')
 
     # def summary(self):
     #     return self.body[:100]
+
+class Comment(models.Model):
+    article = models.ForeignKey(Information, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    content = models.TextField(max_length=1000)
