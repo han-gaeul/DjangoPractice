@@ -31,11 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'reviews',
-    # 'snacks',
-    # 'accounts',
-    # 'django_cleanup.apps.CleanupConfig',
-    # 'imagekit',
+    'reviews',
+    'snacks',
+    'accounts',
+    'django_cleanup.apps.CleanupConfig',
+    'imagekit',
     'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
