@@ -23,7 +23,7 @@
       <div class="container-fluid">
         <!-- Navbar div-1 -->
         <div class="ps-3">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'accounts:index' %}">
             <img src="{% static 'images/black2.png' %}" alt="SOONSAK" width="350px;">
           </a>
         </div>
@@ -59,7 +59,7 @@
               <div class="menu">
                 {% if request.user.is_authenticated %}
                   <li>
-                    <p class="text-muted">{{ request.user }}</p>
+                    <a href="{% url 'accounts:detail' user.pk %}" class="text-muted">{{ request.user }}</a>
                   </li>
                   <li>
                     <a href="{% url 'accounts:logout' %}">로그아웃</a>
