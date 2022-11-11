@@ -6,7 +6,7 @@
   <div class="container mt-5">
     {% for review in reviews %}
       <a href="{% url 'reviews:detail' review.pk %}">{{ review.content }}</a>
-      <p>{{ review.created_at }}</p>
+      <p class="text-muted">{{ review.created_at }}</p>
       {% if review.image %}
         <img src="{{ review.image.url }}" alt="{{ review.image }}">
       {% endif %}
