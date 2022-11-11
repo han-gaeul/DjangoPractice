@@ -73,7 +73,7 @@ def update(request, user_pk):
         form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('accounts:detail', user_pk)
 
     else:
         form = CustomUserChangeForm(instance=request.user)
