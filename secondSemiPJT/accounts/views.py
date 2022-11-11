@@ -39,7 +39,9 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user_login(request, form.get_user())
-            return redirect('/')
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            return redirect('accounts:index')
     else:
         form = AuthenticationForm()
 
