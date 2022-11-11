@@ -57,12 +57,18 @@
               </ul>
               <!-- Navbar etc. -->
               <div class="menu">
-                <li>
-                  <a href="{% url 'accounts:login' %}">로그인</a>
-                </li>
-                <li>
-                  <a href="{% url 'accounts:signup' %}">회원가입</a>
-                </li>
+                {% if request.user.is_authenticated %}
+                  <li>
+                    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+                  </li>
+                {% else %}
+                  <li>
+                    <a href="{% url 'accounts:login' %}">로그인</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'accounts:signup' %}">회원가입</a>
+                  </li>
+                {% endif %}
                 <li>
                   <a href="#">고객센터</a>
                 </li>
