@@ -3,6 +3,31 @@
 {% load static %}
 
 {% block content %}
-  <h1>안녕하세요</h1>
-  <a href="{%url 'accounts:signup'%}>회원가입 </a>
+  <div class="container">
+    {% for snack in snacks %}
+      <div class="col-12 col-lg-4 col-md-6">
+        <a href="{% url 'snacks:detail' snack.pk %}">
+          <div class="card">
+            <div class="card-body">
+              <div class="thumb">
+                {% if snack.thumbnail %}
+                  <img src="{{ snack.thumbnail.url }}" alt="{{ snack.image }}">
+                {% else %}
+                  <img src="https://dummyimage.com/300x300/fff/fff" alt="image">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </a>
+        <div class="d-flex justify-content-between mb-3">
+          <div class="mt-2 d-flex align-itmes-center">
+            <a href="{% url 'snacks:detail' snack.pk %}">
+              <h5 class="card-title">{{ snack.name }}</h5>
+              <p class="card-text">{{ snack.price }}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock content %}

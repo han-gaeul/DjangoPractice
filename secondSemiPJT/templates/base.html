@@ -49,7 +49,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="{% url 'accounts:detail' user.pk %}">
                     <i class="fas bi bi-person-fill"></i>
                     <i class="fas bi bi-person-fill"></i>
                   </a>
@@ -58,6 +58,9 @@
               <!-- Navbar etc. -->
               <div class="menu">
                 {% if request.user.is_authenticated %}
+                  <li>
+                    <p class="text-muted">{{ request.user }}</p>
+                  </li>
                   <li>
                     <a href="{% url 'accounts:logout' %}">로그아웃</a>
                   </li>
