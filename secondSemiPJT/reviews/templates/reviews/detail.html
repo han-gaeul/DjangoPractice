@@ -2,7 +2,8 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-  <p>{{ review.user.username }}
+  <p>
+    <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user.username }}</a>
     <small class="text-muted">{{ review.created_at }}</small>
   </p>
   <p>{{ review.content }}</p>
@@ -58,7 +59,8 @@
   <hr>
   <div class="mt-3 mb-3">
     {% for comment in review.comments.all %}
-      <p>{{ comment.user}}
+      <p>
+        <a href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user}}</a>
         {{ comment.content }}</p>
       <p class="text-muted">{{ comment.created_at }}</p>
       {% if request.user == comment.user %}
