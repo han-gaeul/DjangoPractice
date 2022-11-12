@@ -5,16 +5,13 @@
   <a href="{% url 'reviews:create' %}" class="btn btn-light">리뷰 작성</a>
   <div class="container mt-5">
     {% for review in reviews %}
-      <a href="{% url 'reviews:detail' review.pk %}">{{ review.content }}
+      <div class="mt-3">
+        <a href="{% url 'reviews:detail' review.pk %}">{{ review.content }}</a>
         <small>
           <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user.username }}</a>
         </small>
-      </a>
-      <p class="text-muted">{{ review.created_at }}</p>
-      {% if review.image %}
-        <img src="{{ review.image.url }}" alt="{{ review.image }}">
-      {% endif %}
+        <small class="text-muted">{{ review.created_at }}</small>
+      </div>
     {% endfor %}
   </div>
-
 {% endblock content %}
