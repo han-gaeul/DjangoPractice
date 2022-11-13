@@ -7,6 +7,9 @@
     {% for review in reviews %}
       <div class="mt-3">
         <a href="{% url 'reviews:detail' review.pk %}">{{ review.content }}</a>
+        {% if review.comments %}
+          <span>[{{ review.comments.count }}]</span>
+        {% endif %}
         <small>
           <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user.username }}</a>
         </small>

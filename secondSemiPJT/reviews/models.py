@@ -40,6 +40,7 @@ class Review(models.Model):
             return str(time.days) + '일 전'
         else:
             return False
+    review_comments = models.PositiveIntegerField(verbose_name='댓글 수', null=True)
 
 class Comment(models.Model):
     content = models.CharField(max_length=100)
