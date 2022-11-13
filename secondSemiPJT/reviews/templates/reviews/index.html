@@ -10,7 +10,11 @@
         <small>
           <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user.username }}</a>
         </small>
-        <small class="text-muted">{{ review.created_at }}</small>
+        {% if review.created_string == False %}
+          <small class="text-muted">{{ review.created_at|date:'m월 d일' }}</small>
+        {% else %}
+          <small class="text-muted">{{ review.created_string }}</small>
+        {% endif %}
       </div>
     {% endfor %}
   </div>

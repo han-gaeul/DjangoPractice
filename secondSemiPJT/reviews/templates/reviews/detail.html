@@ -66,7 +66,11 @@
             {{ comment.content }}</p>
         </div>
         <div>
-          <p class="text-muted">{{ comment.created_at }}</p>
+          {% if comment.created_string == False %}
+            <p class="text-muted">{{ comment.created_at|date:'m월 d일' }}</p>
+          {% else %}
+            <p class="text-muted">{{ comment.created_at|date:'H시 m분' }}</p>
+          {% endif %}
         </div>
       </div>
       <div>
