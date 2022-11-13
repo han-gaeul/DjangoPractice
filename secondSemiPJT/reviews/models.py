@@ -35,9 +35,9 @@ class Review(models.Model):
             return str(int(time.seconds / 60)) + '분 전'
         elif time < timedelta(days=1):
             return str(int(time.seconds / 3600)) + '시간 전'
-        elif time < timedelta(days=2):
-            time = datetime.now(tz=timezone.utc).date() - self.created_at.date()
-            return str(time.days) + '일 전'
+        # elif time < timedelta(days=2):
+        #     time = datetime.now(tz=timezone.utc).date() - self.created_at.date()
+        #     return str(time.days) + '일 전'
         else:
             return False
     review_comments = models.PositiveIntegerField(verbose_name='댓글 수', null=True)
