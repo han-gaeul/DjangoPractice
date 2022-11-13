@@ -12,17 +12,20 @@
       <img src="{{ review.review_image.url }}" alt="">
     {% endif %}
   </div>
+
+    {% comment %} review update/delete {% endcomment %}
   <div class="d-flex justify-content-end">
     {% if request.user == review.user %}
       <a href="{% url 'reviews:update' review.pk %}" class="btn btn-light">리뷰 수정</a>
       <a href="{% url 'reviews:delete' review.pk %}" class="btn btn-danger">리뷰 삭제</a>
     {% endif %}
   </div>
+
+  {% comment %} comment create {% endcomment %}
   {% if request.user.is_authenticated %}
-    <form action="{% url 'reviews:add_comment' review.pk %}" method="POST" class="mt-3">
+    <form action="{% url 'reviews:add_comment' review.pk %}" method="POST" class="mt-3" id="comment-form" data-review-id="{{ review.pk }}">
       {% csrf_token %}
-      {% bootstrap_form comment_form %}
-      <!-- Button trigger modal -->
+      {% bootstrap_form comment_form layout='floating' %}
       <button type="submit" class="btn btn-primary">
         댓글 등록
       </button>
@@ -57,6 +60,7 @@
   {% endif %}
 
   <hr>
+  {% comment %} comment create {% endcomment %}
   <div class="mt-3 mb-3">
     {% for comment in review.comments.all %}
       <div class="d-flex justify-content-between">
