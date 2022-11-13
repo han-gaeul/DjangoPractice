@@ -15,12 +15,12 @@ class Review(models.Model):
         format="JPEG",
         options={"quality": 100},
     )
-    review_thumbnail = ImageSpecField(
-        source="images/reviews/",
-        processors=[ResizeToFill(150, 150)],
-        format='JPEG',
-        options={'quality' : 100},
-    )
+    # review_thumbnail = ImageSpecField(
+    #     source="images/reviews/",
+    #     processors=[ResizeToFill(150, 150)],
+    #     format='JPEG',
+    #     options={'quality' : 100},
+    # )
     # stars = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='등록 시간')
     updated_at = models.DateTimeField(auto_now=True)
